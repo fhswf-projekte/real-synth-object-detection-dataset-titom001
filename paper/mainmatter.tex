@@ -1,78 +1,65 @@
-\section{Überschrift Ebene eins}
-
-Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
-
-Zitat aus \cite{scheme} und \cite[17]{knuth}. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
-Es folgt eine Abbildungen. Abbildung \ref{abb_einstein} kann referenziert werden.
-
-\begin{figure}[htbp]
-\centering
-\includegraphics[scale=0.5]{einstein}
-\caption{Beschreibung der Abbildung.}
-\label{abb_einstein}
-\end{figure}
-
-\subsection{Überschrift Ebene zwei}
-
-At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
-
-\section{Aufzählungen, Tabellen und Programmcode}
-
-Eine Aufzählung:
-
+\section{Einleitung}
+\subsection{Projektbeschreibung und Ziele}
+% Kurze Projektbeschrebung
+\subsection{Projekthintergrund}
+% Projekthintergrund BAchelorarbeit
+\subsection{Zeitplanung}
+\section{Durchführung}
+Den Start des Projekts bildet das Kickoff-Meeting mit dem Projektbetreuer und dem Projektdurchführenden am \textbf{29.03.2025}.
+In diesem Meeting wurde das Projekt vorgestellt und die Ziele sowie der Zeitplan besprochen. Anschließend wurde mit der Abgabe des Projektantrags das Projekt offiziell angemeldet.
+\subsection{Recherche und Vergleich von Modellen}
+Das Projekt beginnt mit der Recherche nach aktuellen KI-Modellen, die für die Generierung von Bildern geeignet sind. Dafür wurde zuerst nach entsprechend Benchmarks für die Vergleich von Modellen gesucht. Ein solcher Benchmark hätte es ermöglicht, die Modelle direkt miteinander zu vergleichen und die besten Modelle für das Projekt auszuwählen. Leider gibt es keinen allgemeingültigen Benchmark, der für alle Modelle geeignet ist. Daher wurde beschlossen, die vier obersten Modelle auf der HuggingFace-Website unter der Kategorie Text-To-Image, nach der Sortierung Trending, zu vergleichen. Dabei wurden verschiedene Versionen des gleichen Modells nicht berücksichtigt und jeweils das größte Modell ausgewählt. Fine-Tunings von Modellen wurden auch aus der Auswahl ausgeschlossen um einen möglichst repräsentativen Vergleich von verschiedenen Architekturen zu erhalten. Daraus entstand am 17.04.2025 die folgende Liste von Modellen, die für den Vergleich verwendet werden:
 \begin{itemize}
-\item Lorem ipsum
-\item dolor sit amet
-\item consetetur sadipscing elitr
-\item sed diam nonumy
+    \item HiDream-ai/HiDream-I1-Full
+    \item black-forest-labs/FLUX.1-dev
+    \item stabilityai/stable-diffusion-3.5-large
+    \item stabilityai/stable-diffusion-xl-base-1.0
 \end{itemize}
-Eine nummerierte Aufzählung:
+Diese Liste stellt die Modelle in der Reihenfolge dar, in der sie nach der Trending Sortierung angezeigt wurden.
+\subsection{Kurzvorstellung der Modelle}
 
-\begin{enumerate}
-\item Erster Punkt
-\item Zweiter Punkt
-\item Dritter Punkt
-\end{enumerate}
-Es folgt Tabelle \ref{beispieltabelle}.
+\subsection{Erstellung der Testumgebung}
+\subsection{Vergleich der Modelle}
+Für die Auswahl des Modells wurden verschiedenen Kriterien festgelegt, die für ein Modell welches den Anforderungen des Projekts gerecht werden soll, wichtig sind.
+
+Das erste Kriterium ist die Anzahl der Fehler in den Bild. Für dieses Kriterium wurden die generierten Bilder durch den Autor auf visuelle Fehler untersucht. Als visueller Fehler wird dabei eine Abweichung von einem realen Bild der gleichen Szene definiert. Dies können Artefakte, falsche Anatomie von Personen oder Fehler in der Darstellung der Instrumente sein.
+Das zweite Kriterium ist die Diversität der dargestellten Instrumente. Da in der nachfolgenden Bachelorarbeit ein Modell für Objekterkennung von Gitarren trainiert werden soll, ist es wichtig, dass das Modell verschiedene Gitarren darstellen kann, aber auch andere, ähnliche, Instrumente wie Geigen, Cellos, oder Banjos. Die Diversität wird dabei als Anzahl unterschiedlicher Instrumente und deren Variationen in den generierten Bildern definiert. Dafür wird die Anzahl der verschiedenen Instrumente in den generierten Bildern gezählt. Eine Variation eines Instruments wird mit einem halben Punkt bewertet und ein neues Instrument mit einem Punkt. Die Punkte werden dann addiert und ergeben die Diversität der Instrumente in den generierten Bildern.
+Das dritte Kriterium ist die Diversität der Szene. Diese wird ähnlich wie die Diversität der Instrumente bewertet. Pro Modell werden Bilder mit zwei Eingaben generiert. Die Modelle verwenden dabei die empfohlenen Parameter, wobei pro Eingabe drei Bilder erstellt werden. Pro Bild variiert der \emph{guidance_scale} um den empfohlenen Wert plus zwei und minus zwei. Jede Szene wird dabei mit einem Punkt bewertet. Eine Variation der Szene wird mit einem halben Punkt bewertet. Die Punkte werden dann addiert und ergeben die Diversität der Szene in den generierten Bildern.
+
 
 \begin{table}[htbp]
-\centering
-\begin{tabular}{lrc}
-\toprule
-Linksbündig & Rechtsbündig & Zentriert \\
-\midrule
-Lorem &  13 & amet \\ \addlinespace
-ipsum & 104 & consetetur \\ \addlinespace
-dolor &   7 & sadipscing \\ \addlinespace
-sit   &  -5 & elitr \\
-\bottomrule
-\end{tabular}
-\caption{Beschreibung der Tabelle.}
-\label{beispieltabelle}
+    \centering
+    \begin{tabular}{lllll}
+    \toprule
+    Modell & Dateiname & Anzahl Fehler & Diversität Instrumente & Diversität Szene \\
+    \midrule
+    HiDream-I1-Full &  13 & amet  & 123 &  \\ \addlinespace
+    HiDream-I1-Full & 104 & consetetur \\ \addlinespace
+    HiDream-I1-Full &   7 & sadipscing \\ \addlinespace
+    HiDream-I1-Full &  -5 & elitr \\ \addlinespace
+    HiDream-I1-Full &  12 & dolore \\ \addlinespace
+    HiDream-I1-Full &  13 & amet \\ \addlinespace
+    FLUX.1-dev &  13 & amet \\ \addlinespace
+    FLUX.1-dev & 104 & consetetur \\ \addlinespace
+    FLUX.1-dev &   7 & sadipscing \\ \addlinespace
+    FLUX.1-dev &  -5 & e Large \\ \addlinespace
+    FLUX.1-dev &  12 & d Largee \\ \addlinespace
+    FLUX.1-dev &  13 & a Large\\ \addlinespace
+    SD 3.5 Large &  13 & amet \\ \addlinespace
+    SD 3.5 Large & 104 & consetetur \\ \addlinespace
+    SD 3.5 Large &   7 & sadipscing \\ \addlinespace
+    SD 3.5 Large &  -5 & elitr \\ \addlinespace
+    SD 3.5 Large &  12 & dolore \\ \addlinespace
+    SD 3.5 Large &  13 & amet \\ \addlinespace
+    SD XL Base 1.0 &  13 & amet \\ \addlinespace
+    SD XL Base 1.0 & 104 & consetetur \\ \addlinespace
+    SD XL Base 1.0 &   7 & sadipscing \\ \addlinespace
+    SD XL Base 1.0 &  -5 & elitr \\ \addlinespace
+    SD XL Base 1.0 &  12 & dolore \\ \addlinespace
+    SD XL Base 1.0 &  13 & amet \\ \addlinespace
+    \bottomrule
+    \end{tabular}
+    \caption{Beschreibung der Tabelle.}
+    \label{beispieltabelle}
 \end{table}
 
-Programmcode im Fließtext: \lstinline{printf("Hello, world!\n");}.
-Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
-Es folgt Programmlisting \ref{beispiellisting}.
-
-\begin{lstlisting}[caption={Beschreibung des Listings.}, label=beispiellisting, frame=tblr, numbers=left]
-#include <stdio.h>
-
-int main(void)
-{
-    printf("Hello, world!\n");
-}
-\end{lstlisting}
-Ein Listing ohne Titel, welches nicht im Listingverzeichnis aufgefühert wird:
-
-\begin{lstlisting}
-#include <stdio.h>
-
-int main(void)
-{
-    printf("Hello, world\n");
-}
-\end{lstlisting}
-
-Text kann \emph{kursiv} oder \textbf{fett} gesetzt werden.
-Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.

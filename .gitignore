@@ -172,3 +172,13 @@ cython_debug/
 
 # PyPI configuration file
 .pypirc
+
+# LaTeX
+*.aux
+*.bbl
+*.bcf
+*.blg
+*.run.xml
+*.toc
+*.synctex(busy)
+*.synctex.gz
