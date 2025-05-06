@@ -22,44 +22,59 @@ Diese Liste stellt die Modelle in der Reihenfolge dar, in der sie nach der Trend
 \subsection{Vergleich der Modelle}
 Für die Auswahl des Modells wurden verschiedenen Kriterien festgelegt, die für ein Modell welches den Anforderungen des Projekts gerecht werden soll, wichtig sind.
 
-Das erste Kriterium ist die Anzahl der Fehler in den Bild. Für dieses Kriterium wurden die generierten Bilder durch den Autor auf visuelle Fehler untersucht. Als visueller Fehler wird dabei eine Abweichung von einem realen Bild der gleichen Szene definiert. Dies können Artefakte, falsche Anatomie von Personen oder Fehler in der Darstellung der Instrumente sein.
-Das zweite Kriterium ist die Diversität der dargestellten Instrumente. Da in der nachfolgenden Bachelorarbeit ein Modell für Objekterkennung von Gitarren trainiert werden soll, ist es wichtig, dass das Modell verschiedene Gitarren darstellen kann, aber auch andere, ähnliche, Instrumente wie Geigen, Cellos, oder Banjos. Die Diversität wird dabei als Anzahl unterschiedlicher Instrumente und deren Variationen in den generierten Bildern definiert. Dafür wird die Anzahl der verschiedenen Instrumente in den generierten Bildern gezählt. Eine Variation eines Instruments wird mit einem halben Punkt bewertet und ein neues Instrument mit einem Punkt. Die Punkte werden dann addiert und ergeben die Diversität der Instrumente in den generierten Bildern.
-Das dritte Kriterium ist die Diversität der Szene. Diese wird ähnlich wie die Diversität der Instrumente bewertet. Pro Modell werden Bilder mit zwei Eingaben generiert. Die Modelle verwenden dabei die empfohlenen Parameter, wobei pro Eingabe drei Bilder erstellt werden. Pro Bild variiert der \emph{guidance_scale} um den empfohlenen Wert plus zwei und minus zwei. Jede Szene wird dabei mit einem Punkt bewertet. Eine Variation der Szene wird mit einem halben Punkt bewertet. Die Punkte werden dann addiert und ergeben die Diversität der Szene in den generierten Bildern.
+Das erste Kriterium ist die Anzahl der Fehler in den Bild. Für dieses Kriterium wurden die generierten Bilder durch den Autor auf visuelle Fehler untersucht. Als visueller Fehler wird dabei eine Abweichung von einem realen Bild der gleichen Szene definiert. Dies können Artefakte, falsche Anatomie von Personen oder Fehler in der Darstellung der Instrumente sein.\\
+Das zweite Kriterium ist die Diversität der dargestellten Instrumente. Da in der nachfolgenden Bachelorarbeit ein Modell für Objekterkennung von Gitarren trainiert werden soll, ist es wichtig, dass das Modell verschiedene Gitarren darstellen kann, aber auch andere, ähnliche, Instrumente wie Geigen, Cellos, oder Banjos. Die Diversität wird dabei als Anzahl unterschiedlicher Instrumente und deren Variationen in den generierten Bildern definiert. Dafür wird die Anzahl der verschiedenen Instrumente in den generierten Bildern gezählt. Eine Variation eines Instruments wird mit einem halben Punkt bewertet und ein neues Instrument mit einem Punkt. Die Punkte werden dann addiert und ergeben die Diversität der Instrumente in den generierten Bildern.\\
+Das dritte Kriterium ist die Diversität der Szene. Diese wird ähnlich wie die Diversität der Instrumente bewertet. Pro Modell werden Bilder mit zwei Eingaben generiert. Die Modelle verwenden dabei die empfohlenen Parameter, wobei pro Eingabe drei Bilder erstellt werden. Pro Bild variiert der \emph{guidance\_scale} um den, vom Modellm, empfohlenen Wert plus zwei und minus zwei. Jede Szene wird dabei mit einem Punkt bewertet. Eine Variation einer bereits vorhandenen Szene wird mit einem halben Punkt bewertet.\\
+Die Gesamtwertung pro Bild wird dann aus der Summe der Punkte der Diversitätskriterien abzüglich der Anzahl der Fehler in den Bildern gebildet. Für die Modellwertung werden dann die Einzelwertungen addiert und durch die Anzahl der Bilder geteilt. Das Modell mit der höchsten Gesamtwertung wird dann als das beste Modell ausgewählt.\\
+In Tabelle \ref{modelevaluationresults} sind die Ergebnisse der Bewertung der Modelle dargestellt. Die untersuchten Bilder mit dne markierten Fehlern und Instrumenten sind in Anhang \ref{anhangbilder} zu finden.
 
-
-\begin{table}[htbp]
+\begin{table}[h]
     \centering
-    \begin{tabular}{lllll}
+    \begin{tabular}{llllll}
     \toprule
-    Modell & Dateiname & Anzahl Fehler & Diversität Instrumente & Diversität Szene \\
+    Dateiname & \makecell{Anzahl\\Fehler} & \makecell{Diversität\\Instrumente} & \makecell{Diversität\\Szene} & Wertung \\
     \midrule
-    HiDream-I1-Full &  13 & amet  & 123 &  \\ \addlinespace
-    HiDream-I1-Full & 104 & consetetur \\ \addlinespace
-    HiDream-I1-Full &   7 & sadipscing \\ \addlinespace
-    HiDream-I1-Full &  -5 & elitr \\ \addlinespace
-    HiDream-I1-Full &  12 & dolore \\ \addlinespace
-    HiDream-I1-Full &  13 & amet \\ \addlinespace
-    FLUX.1-dev &  13 & amet \\ \addlinespace
-    FLUX.1-dev & 104 & consetetur \\ \addlinespace
-    FLUX.1-dev &   7 & sadipscing \\ \addlinespace
-    FLUX.1-dev &  -5 & e Large \\ \addlinespace
-    FLUX.1-dev &  12 & d Largee \\ \addlinespace
-    FLUX.1-dev &  13 & a Large\\ \addlinespace
-    SD 3.5 Large &  13 & amet \\ \addlinespace
-    SD 3.5 Large & 104 & consetetur \\ \addlinespace
-    SD 3.5 Large &   7 & sadipscing \\ \addlinespace
-    SD 3.5 Large &  -5 & elitr \\ \addlinespace
-    SD 3.5 Large &  12 & dolore \\ \addlinespace
-    SD 3.5 Large &  13 & amet \\ \addlinespace
-    SD XL Base 1.0 &  13 & amet \\ \addlinespace
-    SD XL Base 1.0 & 104 & consetetur \\ \addlinespace
-    SD XL Base 1.0 &   7 & sadipscing \\ \addlinespace
-    SD XL Base 1.0 &  -5 & elitr \\ \addlinespace
-    SD XL Base 1.0 &  12 & dolore \\ \addlinespace
-    SD XL Base 1.0 &  13 & amet \\ \addlinespace
+    HiDream-I1-Full\_prompt-0\_guidance-3.0\_steps-50.png & 7 & 3,5 & 1   & -2,5 \\ \addlinespace
+    HiDream-I1-Full\_prompt-0\_guidance-5.0\_steps-50.png & 9 & 1,5 & 0,5 & -7 \\ \addlinespace
+    HiDream-I1-Full\_prompt-0\_guidance-7.0\_steps-50.png & 8 & 4   & 0,5 & -3,5 \\ \addlinespace
+    HiDream-I1-Full\_prompt-1\_guidance-3.0\_steps-50.png & 5 & 2   & 1   & -2 \\ \addlinespace
+    HiDream-I1-Full\_prompt-1\_guidance-5.0\_steps-50.png & 5 & 1   & 0,5 & -3,5 \\ \addlinespace
+    HiDream-I1-Full\_prompt-1\_guidance-7.0\_steps-50.png & 3 & 2,5 & 0,5 & 0 \\ \addlinespace
+    FLUX-1-dev\_prompt-0\_guidance-1.5\_steps-50.png & 2 & 2,5 & 1 & 1,5 \\ \addlinespace
+    FLUX-1-dev\_prompt-0\_guidance-3.5\_steps-50.png & 4 & 3   & 1 & 0 \\ \addlinespace
+    FLUX-1-dev\_prompt-0\_guidance-5.5\_steps-50.png & 3 & 4   & 1 & 2 \\ \addlinespace
+    FLUX-1-dev\_prompt-1\_guidance-1.5\_steps-50.png & 2 & 1   & 1 & 0 \\ \addlinespace
+    FLUX-1-dev\_prompt-1\_guidance-3.5\_steps-50.png & 1 & 3,5 & 1 & 3,5 \\ \addlinespace
+    FLUX-1-dev\_prompt-1\_guidance-5.5\_steps-50.png & 1 & 3,5 & 1 & 3,5 \\ \addlinespace
+    sd35\_prompt-0\_guidance-1.5\_steps-28.png & 2 & 1   & 1 & 0 \\ \addlinespace
+    sd35\_prompt-0\_guidance-3.5\_steps-28.png & 2 & 2,5 & 1 & 1,5 \\ \addlinespace
+    sd35\_prompt-0\_guidance-5.5\_steps-28.png & 4 & 3   & 1 & 0 \\ \addlinespace
+    sd35\_prompt-1\_guidance-1.5\_steps-28.png & 5 & 3   & 1 & -1 \\ \addlinespace
+    sd35\_prompt-1\_guidance-3.5\_steps-28.png & 4 & 3,5 & 1 & 0,5 \\ \addlinespace
+    sd35\_prompt-1\_guidance-5.5\_steps-28.png & 5 & 2,5 & 1 & -1,5 \\ \addlinespace
+    sdxlrefiner\_prompt-0\_guidance-5.5\_steps-40.png & 7 & 0 & 1 & -6 \\ \addlinespace
+    sdxlrefiner\_prompt-0\_guidance-7.5\_steps-40.png & 7 & 0 & 1 & -6 \\ \addlinespace
+    sdxlrefiner\_prompt-0\_guidance-9.5\_steps-40.png & 8 & 0 & 1 & -7 \\ \addlinespace
+    sdxlrefiner\_prompt-1\_guidance-5.5\_steps-40.png & 7 & 0 & 1 & -6 \\ \addlinespace
+    sdxlrefiner\_prompt-1\_guidance-7.5\_steps-40.png & 8 & 0 & 1 & -7 \\ \addlinespace
+    sdxlrefiner\_prompt-1\_guidance-9.5\_steps-40.png & 7 & 1 & 1 & -5 \\ \addlinespace
     \bottomrule
     \end{tabular}
-    \caption{Beschreibung der Tabelle.}
-    \label{beispieltabelle}
+    \caption{Bewertung der Modelle}
+    \label{modelevaluationresults}
 \end{table}
+
+% Analyse der Ergebnisse pro Modell
+
+Basierend auf den Ergebnissen aus Tabelle \ref{modelevaluationresults} ergeben sich die folgenden Gesamtwertungen für die Modelle:
+\begin{itemize}
+    \item HiDream-I1-Full: -3
+    \item FLUX-1-dev: 1,75
+    \item sd35: 0,08
+    \item sdxlrefiner: -6,1
+\end{itemize}
+
+Das Modell \textbf{FLUX-1-dev} hat die höchste Gesamtwertung und wird daher für die weitere Arbeit verwendet. Das Modell \textbf{sd35} hat eine ähnliche Gesamtwertung, jedoch ist die Diversität der Instrumente und Szenen geringer als bei dem FLUX-Modell. Daher wird das Modell \textbf{sd35} nicht weiter betrachtet. Die Modelle \textbf{HiDream-I1-Full} und \textbf{sdxlrefiner} haben eine deutlich schlechtere Gesamtwertung und werden daher nicht weiter betrachtet.
+
+
 
